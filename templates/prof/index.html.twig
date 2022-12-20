@@ -1,0 +1,171 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfController!{% endblock %}
+
+{% block body %}
+
+<h3>Mes eleves : </h3>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Numero</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Notes</th>
+      <th scope="col">Mail</th>
+      <th scope="col">Presence</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  {% for eleve in eleves %}
+    <tr id = "eleve">
+      <th scope="row">{{ eleve.id }}</th>
+      <td>{{eleve.prenom }}</td>
+      <td>{{eleve.nom}}</td>
+      <td><button class = "btn btn-link"  data-toggle="modal" data-target="#notesModal" >notes</button></td>
+      <td>{{eleve.email}}</td>
+      <td class = "jn" {{ stimulus_controller('students', {url: path('prise_presence')}) }} >
+              {# ce button va  garder quelque infos : 
+                -l'id du button depend de l'id de l'eleve
+                -la class du button est un btn-link 
+                -un id de l'eleve envoyer vers le controlleur 
+                -un on ou off selon eleve.present  #}
+             <button
+                    id="is-present_{{eleve.id}}"
+                    class="btn btn-link"
+                    data-entry-eleveid="{{eleve.id}}"
+                    data-entry-presence="{{eleve.present == true ? 'on' : 'off'}}"
+                    data-action="students#onChangePresenceClick">
+                    
+                    {% if eleve.present == true %}
+
+                      {#cette image a une propriete qui est result 
+                        on va mettre une valeur par defaut,
+                        apres cette valeur peut etre changer depuis le controlleur 
+                        
+                        #}
+                      <img data-students-target="result"  height="20">
+                      {% set eleve_status = 'Present' %}
+                      {% set status_color = '#34A84F' %}
+                     {% else %}
+                      <img  data-students-target="result" height="20">
+                      {% set eleve_status = 'Absent' %}
+                      {% set status_color = '#FF2E2E' %}
+                    {% endif %}
+              </button>
+
+                <p id="eleve-status_{{eleve.id}}" style="color: {{ status_color }};">{{ eleve_status }}</p>
+          </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+<h3>Mes matieres : </h3>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Numero</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Coiefficient</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mathématiques</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Physiques</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Sciences Naturelles</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3>Mon emploi du temps  : </h3>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Lundi</th>
+      <th scope="col">Mardi</th>
+      <th scope="col">Mercredi</th>
+      <th scope="col">Jeudi</th>
+      <th scope="col">Vendredi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5 eme </td>
+      <td>6 eme </td>
+      <td>4 eme </td>
+      <td>5 eme </td>
+      <td>6 eme</td>
+    </tr>
+  </tbody>
+</table>
+<!-- Button trigger modal -->
+<button id ="add-note"type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Ajouter une note 
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une note</h5>
+        <button id ="close-modal-note" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{##############################       Notes Modales :          ######################}
+<div class="modal" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="container-fluid" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Liste de notes </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"  {{ stimulus_controller('students')}}>  
+
+                    <input type="text" 
+                    data-action="students#onSearchInput" > 
+                    <div  data-students-target="result" 
+                    	class="search-preview">
+
+                    </div> 
+                    <button class="btn btn-dark" data-action="click->students#laction">SOUMETTRE</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+App\Entity\User:
+  sidi: 
+    email: "sidi@gmail.com"
+    password : "sidipassword"
+    roles : ["ROLE_STUDENT"]
+    nom : "Sidi"
+    prenom : "Khaled"
+  yahya: 
+    email: "yahya@gmail.com"
+    password : "yahyapassword"
+    roles : ["ROLE_STUDENT"]
+    nom : "Yahya"
+    prenom  : "TALEB"
+  khaled: 
+    email: "khaled@gmail.com"
+    password : "sidipassword"
+    roles : ["ROLE_STUDENT"]
+    nom : "Khaled"
+    prenom : "Amar"
+    
+  aymen :
+    email: "aymen@gmail.com"
+    password : "aymenpassword"
+    roles : [ROLE_PROF]
+    nom : "Aymen"
+    prenom : "Ismail"
+  
+
+  yassin : 
+    email: "yassin@gmail.com"
+    password : "yassin"
+    roles : [ROLE_PROF]
+    nom : "Yassin"
+    prenom : "Omouh"
+
+  chouaib :
+    email: "chouaib@gmail.com"
+    password : "chouaibpassword"
+    roles : [ROLE_PROF]
+    nom : "Chouaib"
+    prenom : "Skitou"
+
+  hassan :
+    email: "hassan@gmail.com"
+    password : "hassanpassword"
+    roles : [ROLE_PROF]
+    nom : "Hassan"
+    prenom : "Derkaoui"
+
+  

@@ -1,0 +1,22 @@
+App\Entity\Matiere:
+  matiere_1: 
+    nom : "Mathematiques"
+    coefficient : 9 
+  matiere_2: 
+    nom : "Physiques"
+    coefficient : 8 
+  matiere_3: 
+    nom : "Sciences Naturelles"
+    coefficient : 4 
+
+  matiere_4: 
+    nom : "Arabe"
+    coefficient : 3 
+
+  matiere_5: 
+    nom : "Français"
+    coefficient : 3 
+
+  matiere_6: 
+    nom : "Anglais"
+    coefficient : 2 

@@ -1,0 +1,7 @@
+App\Entity\Note:
+  note_1:
+    numerator : 12
+    denomunator : 20
+    user : '@sidi'
+    matiere : '@matiere_1'
+  
