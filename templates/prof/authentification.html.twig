@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block style %}{% endblock %}
+
+
+{% block body %}
+
+<form action="" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    <h5>Bien venue à votre espace</h5>
+    <label for="email">Email</label>
+    <input class = "form-control" type="email" id="email" name="email" value="{{ last_username }}">
+
+    <label for="password">Password</label>
+    <input class = "form-control" type="password" id="password" name="password">
+
+    {% if error %}
+        <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <button type="submit">Login</button>
+</form>
+{% endblock %}
+
+
+{% block script %}{% endblock %}

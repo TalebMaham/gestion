@@ -26,36 +26,6 @@
       <td><button class = "btn btn-link"  data-toggle="modal" data-target="#notesModal" >notes</button></td>
       <td>{{eleve.email}}</td>
       <td class = "jn" {{ stimulus_controller('students', {url: "/"}) }} >
-              {# ce button va  garder quelque infos : 
-                -l'id du button depend de l'id de l'eleve
-                -la class du button est un btn-link 
-                -un id de l'eleve envoyer vers le controlleur 
-                -un on ou off selon eleve.present  #}
-             {# <button
-                    id="is-present_{{eleve.id}}"
-                    class="btn btn-link"
-                    data-entry-eleveid="{{eleve.id}}"
-                    data-entry-presence="{{eleve.present == true ? 'on' : 'off'}}"
-                    data-action="students#onChangePresenceClick">
-                    
-                    {% if eleve.present == true %}
-
-                      {#cette image a une propriete qui est result 
-                        on va mettre une valeur par defaut,
-                        apres cette valeur peut etre changer depuis le controlleur 
-                        
-                        #}
-                      {# <img data-students-target="result"  height="20">
-                      {% set eleve_status = 'Present' %}
-                      {% set status_color = '#34A84F' %}
-                     {% else %}
-                      <img  data-students-target="result" height="20">
-                      {% set eleve_status = 'Absent' %}
-                      {% set status_color = '#FF2E2E' %}
-                    {% endif %}
-              </button> #} 
-
-                {# <p id="eleve-status_{{eleve.id}}" style="color: {{ status_color }};">{{ eleve_status }}</p> #}
 
                 <button id = "mbutton_{{eleve.id}}"
                   class  ="btn btn-link"

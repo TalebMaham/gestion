@@ -18,5 +18,13 @@ class MatiereUnitTest extends TestCase
         assertEquals($matiere->getNom(), "maths");
         assertEquals($matiere->getCoefficient(), 9);
 
+
+        $matiere = new Matiere(); 
+        $matiere->setNom("physiques"); 
+        $matiere->setCoefficient(8); 
+
+        assertEquals($matiere->getNom(), "physiques");
+        assertEquals($matiere->getCoefficient(), 8);
+
     }
 }
