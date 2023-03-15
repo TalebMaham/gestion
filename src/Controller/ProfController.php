@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\UserType;
 use App\Repository\MatiereRepository;
 use App\Repository\NoteRepository;
 use App\Repository\UserRepository;
@@ -82,10 +80,7 @@ class ProfController extends AbstractController
         if ($this->getUser()) {
             return $this->redirectToRoute('app_prof');
         }
-
-        // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('prof/authentification.html.twig', ['last_username' => $lastUsername, 'error' => $error]);

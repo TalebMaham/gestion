@@ -45,13 +45,13 @@ class Note
     }
 
     
-    public function getDenomunator(): ?int
+    public function getDenominator(): ?int
     {
         return $this->denomunator;
     }
 
       
-    public function setDenomunator(int $denomunator): ?self
+    public function setDenominator(int $denomunator): ?self
     {
          $this->denomunator = $denomunator;
          return $this ; 
