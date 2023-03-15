@@ -39,8 +39,38 @@ class FirstPantherTest extends PantherTestCase
 
         $crawler = $client->request('GET', '/prof/eleves');
         $client->executeScript('document.querySelector("#add-note").click()');
+        sleep(3);
         $client->executeScript('document.querySelector("#close-modal-note").click()');
 
+        sleep(3);
+        $client->executeScript('document.querySelector("#close-modal-note").click()');
+
+
+        sleep(1);
+        $client->executeScript('document.querySelector("#mbutton_1").click()');
+        sleep(1);
+        $client->executeScript('document.querySelector("#mbutton_2").click()');
+        sleep(1);
+        $client->executeScript('document.querySelector("#mbutton_3").click()');
+        sleep(1);
+        $client->executeScript('document.querySelector("#mbutton_4").click()');
+        sleep(1);
+        $client->executeScript('document.querySelector("#mbutton_5").click()');
+        sleep(1);
+        $client->executeScript('document.querySelector("#mbutton_6").click()');
+        sleep(1);
+        $client->executeScript('document.querySelector("#mbutton_1").click()');
+        sleep(1);
+        $client->executeScript('document.querySelector("#mbutton_2").click()');
+        sleep(1);
+        $client->executeScript('document.querySelector("#mbutton_3").click()');
+        sleep(1);
+        $client->executeScript('document.querySelector("#mbutton_4").click()');
+        sleep(1);
+        $client->executeScript('document.querySelector("#mbutton_5").click()');
+        sleep(1);
+        $client->executeScript('document.querySelector("#mbutton_6").click()');
+        
         sleep(3);
     }
 
