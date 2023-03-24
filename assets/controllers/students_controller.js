@@ -15,7 +15,7 @@ export default class extends Controller {
         url: String ,
     };
 
-    static targets = ['result'];
+    static targets = ['result', 'image'];
     connect() {
         
     console.log("connecter !"); 
@@ -47,32 +47,55 @@ export default class extends Controller {
     async onChangePresenceClick(event) {
 
         console.log('is connected'); 
-        let isPresent = event.currentTarget.dataset.entryPresence;
-        let eleve_id = event.currentTarget.dataset.entryEleveid;
-        console.log(eleve_id);
-        $('#is-present_' + eleve_id).prop("disabled", true);
-        const params = new URLSearchParams({
-            eleve_id: eleve_id,
-            is_present: isPresent
-        });
-        const response = await fetch(`${this.urlValue}?${params.toString()}`);
-        let data = await response.json();
-        console.log(data) ;
-        if (await data.success) {
-            if (await data.status == "Present") {
-                console.log(data.status)
-                this.resultTarget.src = 'images/toggle-on-solid.svg';
-                $('#is-present_' + eleve_id).attr('data-entry-presence', 'on');
-                $('#eleve-status_' + eleve_id).attr('style', 'color: #34A84F');
-                $('#eleve-status_' + eleve_id).text('Present')
-            } else if (await data.status == "Absent") {
-                this.resultTarget.src = 'images/toggle-off-solid.svg';
-                $('#is-present_' + eleve_id).attr('data-entry-presence', 'off');
-                $('#eleve-status_' + eleve_id).attr('style', 'color: #FF2E2E');
-                $('#eleve-status_' + eleve_id).text('Absent')
-            }
-            $('#is-present_' + eleve_id).prop("disabled", false);
-        }
-    }
+         let isPresent = event.currentTarget.dataset.entryPresence;
+         let eleveid = event.currentTarget.dataset.entryEleveid; 
+         
+        
+
+         if(isPresent == "Present")
+         {
+            $("#image_" + eleveid).attr("src","../images/toggle-off-solid.svg")
+           // this.resultTarget.src = '{{asset(images/toggle-off-solid.svg)}}';
+            $("#result_" + eleveid).attr("style",'color : red') 
+            $("#result_" + eleveid).text('Absent');
+            $("#mbutton_" + eleveid).attr("data-entry-presence","Absent") ;
+
+
+         }
+         else{
+            $("#image_" + eleveid).attr("src","../images/toggle-on-solid.svg")
+           // this.resultTarget.src = '{{asset(images/toggle-on-solid.svg)}}';
+            $("#result_" + eleveid).attr("style",'color : green');
+            $("#result_" + eleveid).text('Present');
+            $("#mbutton_" + eleveid).attr("data-entry-presence","Present") ;
+         }
+       
+
+    //     let eleve_id = event.currentTarget.dataset.entryEleveid;
+    //     console.log(eleve_id);
+    //     $('#is-present_' + eleve_id).prop("disabled", true);
+    //     const params = new URLSearchParams({
+    //         eleve_id: eleve_id,
+    //         is_present: isPresent
+    //     });
+    //     const response = await fetch(`${this.urlValue}?${params.toString()}`);
+    //     let data = await response.json();
+    //     console.log(data) ;
+    //     if (await data.success) {
+    //         if (await data.status == "Present") {
+    //             console.log(data.status)
+    //             this.resultTarget.src = 'images/toggle-on-solid.svg';
+    //             $('#is-present_' + eleve_id).attr('data-entry-presence', 'on');
+    //             $('#eleve-status_' + eleve_id).attr('style', 'color: #34A84F');
+    //             $('#eleve-status_' + eleve_id).text('Present')
+    //         } else if (await data.status == "Absent") {
+    //             this.resultTarget.src = 'images/toggle-off-solid.svg';
+    //             $('#is-present_' + eleve_id).attr('data-entry-presence', 'off');
+    //             $('#eleve-status_' + eleve_id).attr('style', 'color: #FF2E2E');
+    //             $('#eleve-status_' + eleve_id).text('Absent')
+    //         }
+    //         $('#is-present_' + eleve_id).prop("disabled", false);
+    //     }
+     }
  
 }

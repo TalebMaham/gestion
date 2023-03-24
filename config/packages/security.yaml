@@ -16,6 +16,12 @@ security:
         main:
             lazy: true
             provider: app_user_provider
+            form_login:
+                # "app_login" is the name of the route created previously
+                login_path: app_login
+                check_path: app_login
+         
+
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -26,8 +32,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+       #  - { path: ^/principal, roles: ROLE_ADMIN }
+       #  - { path: ^/prof/eleves, roles: ROLE_STUDENT }
 
 when@test:
     security:
@@ -41,3 +47,8 @@ when@test:
                 cost: 4 # Lowest possible value for bcrypt
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon
+
+        role_hierarchy:
+            ROLE_STUDENT: [ROLE_USER]
+            ROLE_PROF: [ROLE_STUDENT]
+            ROLE_PRINCIPAL: [ROLE_PROF]
