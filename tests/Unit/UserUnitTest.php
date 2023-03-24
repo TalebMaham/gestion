@@ -14,6 +14,7 @@ class UserUnitTest extends TestCase
         $this->assertEquals($votreObjet, $resultat);
         $this->assertEquals($email, $votreObjet->getEmail());
     }
+    
     public function testSetNom(): void
     {
         $votreObjet = new User(); 
