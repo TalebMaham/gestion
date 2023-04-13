@@ -13,47 +13,41 @@ class Note
     #[ORM\Column]
     private ?int $id = null;
 
-
     #[ORM\Column]
     private ?int $numerator = null;
 
-
     #[ORM\Column]
-    private ?int $denomunator = null;
-    
+    private ?int $denominator = null;
 
-    #[ORM\ManyToOne(targetEntity: Matiere::class, inversedBy: 'Note')]
+    #[ORM\ManyToOne(targetEntity: Matiere::class, inversedBy: 'notes')]
     private $matiere;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'Note')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'notes')]
     private $user;
-
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    
     public function getNumerator(): ?int
     {
         return $this->numerator;
     }
+
     public function setNumerator(int $numerator): ?int
     {
         return $this->numerator = $numerator;
     }
 
-    
     public function getDenominator(): ?int
     {
-        return $this->denomunator;
+        return $this->denominator;
     }
 
-      
-    public function setDenominator(int $denomunator): ?self
+    public function setDenominator(int $denominator): ?self
     {
-         $this->denomunator = $denomunator;
+         $this->denominator = $denominator;
          return $this ; 
     }
 
@@ -62,20 +56,17 @@ class Note
         return $this->matiere;
     }
 
-      
     public function setMatiere(Matiere $matiere): ?self
     {
          $this->matiere = $matiere;
          return $this ; 
     }
 
-
     public function getUser(): ?User
     {
         return $this->user;
     }
 
-      
     public function setUser(User $user): ?self
     {
          $this->user = $user;

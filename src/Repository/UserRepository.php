@@ -56,68 +56,78 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->save($user, true);
     }
 
-//    /**
-//     * @return User[] Returns an array of User objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('u.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return User[] Returns an array of User objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('u')
+    //            ->andWhere('u.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('u.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
-//    public function findOneBySomeField($value): ?User
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
-
-
+    //    public function findOneBySomeField($value): ?User
+    //    {
+    //        return $this->createQueryBuilder('u')
+    //            ->andWhere('u.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 
 
-public function findAllStudents() : array 
-{
-    return $this->createQueryBuilder('u')
-      //  ->innerJoin('App\Entity\Note', 'note', 'WITH', 'note.id = u.id')
-        ->getQuery()
-        ->getResult()
-        ;
-}
-
-
-
-
-public function findNotePerSubjects() : array 
-{
-    return $this->createQueryBuilder('u')
-        ->innerJoin('App\Entity\Note', 'n', 'WITH', 'n.id = u.id')
-        ->innerJoin('App\Entity\Matiere', 'm', 'WITH', 'n.id = m.id')
-        ->getQuery()
-        ->getResult()
-        ;
-}
-
-
-public function search($value)
-{
-    if(!is_null($value))
+    /**
+     * @return User[] Returns an array of User objects
+     */
+    public function findByRole($role): array
     {
-
-        return $this->createQueryBuilder('s')
-        ->andWhere('lower(s.nom) LIKE :student_name')
-        ->setParameter('student_name', '%' . strtolower((string) $value) . '%')
-        ->setMaxResults(100)
-        ->getQuery()
-        ->getResult();
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :role')
+            ->setParameter('role', '%' . $role . '%')
+            ->getQuery()
+            ->getResult();
     }
-}
+
+
+
+    public function findAllStudents(): array
+    {
+        return $this->createQueryBuilder('u')
+            //  ->innerJoin('App\Entity\Note', 'note', 'WITH', 'note.id = u.id')
+            ->andWhere('u.roles = :role')
+            ->getQuery()
+            ->getResult();
+    }
+
+
+
+
+    public function findNotePerSubjects(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->innerJoin('App\Entity\Note', 'n', 'WITH', 'n.id = u.id')
+            ->innerJoin('App\Entity\Matiere', 'm', 'WITH', 'n.id = m.id')
+            ->getQuery()
+            ->getResult();
+    }
+
+
+    public function search($value)
+    {
+        if (!is_null($value)) {
+
+            return $this->createQueryBuilder('s')
+                ->andWhere('lower(s.nom) LIKE :student_name')
+                ->setParameter('student_name', '%' . strtolower((string) $value) . '%')
+                ->setMaxResults(100)
+                ->getQuery()
+                ->getResult();
+        }
+    }
 }

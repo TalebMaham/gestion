@@ -55,7 +55,6 @@ export default class extends Controller {
          if(isPresent == "Present")
          {
             $("#image_" + eleveid).attr("src","../images/toggle-off-solid.svg")
-           // this.resultTarget.src = '{{asset(images/toggle-off-solid.svg)}}';
             $("#result_" + eleveid).attr("style",'color : red') 
             $("#result_" + eleveid).text('Absent');
             $("#mbutton_" + eleveid).attr("data-entry-presence","Absent") ;
@@ -64,7 +63,6 @@ export default class extends Controller {
          }
          else{
             $("#image_" + eleveid).attr("src","../images/toggle-on-solid.svg")
-           // this.resultTarget.src = '{{asset(images/toggle-on-solid.svg)}}';
             $("#result_" + eleveid).attr("style",'color : green');
             $("#result_" + eleveid).text('Present');
             $("#mbutton_" + eleveid).attr("data-entry-presence","Present") ;

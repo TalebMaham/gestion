@@ -1,7 +1,22 @@
 App\Entity\Note:
   note_1:
     numerator : 12
-    denomunator : 20
+    denominator : 20
     user : '@sidi'
     matiere : '@matiere_1'
+
+  note_2:
+    numerator : 18
+    denominator : 20
+    user : '@sidi'
+    matiere : '@matiere_2'
+
+
+  note_3:
+    numerator : 14
+    denominator : 20
+    user : '@sidi'
+    matiere : '@matiere_3'
+
+
   

@@ -1,0 +1,23 @@
+framework:
+    workflows:
+        student_progression:
+            type: 'workflow'
+            marking_store:
+                type: "method"
+                property: status
+            supports:
+                - App\Entity\User
+            places:
+                - beginner
+                - intermediate
+                - advanced
+            transitions:
+                beginner_to_intermediate:
+                    from: 'beginner'
+                    to: 'intermediate'
+                intermediate_to_advanced:
+                    from: 'intermediate'
+                    to: 'advanced'
+           
+
+

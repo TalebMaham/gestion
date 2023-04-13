@@ -19,17 +19,29 @@ class ProfController extends AbstractController
  
     public function index(Request $request, UserRepository $userRepository, NoteRepository $noteRepository, MatiereRepository $matiereRepository): Response
     {
-        $eleves = $userRepository->findAllStudents(); 
-        $notes = $noteRepository->findAll(); 
-        $matiers = $matiereRepository->findAll(); 
+         // Vérifiez si l'utilisateur est authentifié
+         if ($this->isGranted('ROLE_STUDENT')) {
+            // Redirigez vers la page de connexion
+            return $this->redirectToRoute('app_student');
+        }
+        // Vérifiez si l'utilisateur est authentifié
+        if ($this->isGranted('ROLE_PROF')) {
+            // Redirigez vers la page de connexion
+            $eleves = $userRepository->findByRole("ROLE_STUDENT"); 
+            $notes = $noteRepository->findAll(); 
+            $matiers = $matiereRepository->findAll(); 
   
 
         return $this->render('prof/index.html.twig', [
             'controller_name' => 'ProfController',
             'eleves' => $eleves,
             'notes' => $notes,
-            'matieres' => $matiers 
+            'matieres' => $matiers,
+            'user'=> $this->getUser()
         ]);
+        
+    }
+        return $this->redirectToRoute('app_login');
     }
 
 
@@ -39,8 +51,7 @@ class ProfController extends AbstractController
         $output = [];
         $search = $request->get('q'); 
         $etudiants = $userRepository->search($search); 
-  
-           
+            
         return new JsonResponse($etudiants[0]); 
     }
 
@@ -74,15 +85,5 @@ class ProfController extends AbstractController
     }
 
 
-    #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
-    {
-        if ($this->getUser()) {
-            return $this->redirectToRoute('app_prof');
-        }
-        $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('prof/authentification.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
-    }
 }

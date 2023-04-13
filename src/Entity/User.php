@@ -38,6 +38,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     private ?bool $present = true; 
 
+    #[ORM\Column]
+    private ?string $status = "beginner"; 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -143,6 +146,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPresent(bool $present):self
     {
          $this->present = $present; 
+
+         return $this; 
+    }
+
+    public function getStatus(): string
+    {
+        return $this->status; 
+    }
+
+    public function setStatus(string $status):self
+    {
+         $this->status = $status; 
 
          return $this; 
     }

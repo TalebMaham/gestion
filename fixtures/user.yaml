@@ -5,27 +5,40 @@ App\Entity\User:
     roles : ["ROLE_STUDENT"]
     nom : "Sidi"
     prenom : "Khaled"
+    status: "beginner"
+
   yahya: 
     email: "yahya@gmail.com"
     password : "yahyapassword"
     roles : ["ROLE_STUDENT"]
     nom : "Yahya"
     prenom  : "TALEB"
+    status: "advanced"
+
   khaled: 
     email: "khaled@gmail.com"
     password : "sidipassword"
     roles : ["ROLE_STUDENT"]
     nom : "Khaled"
     prenom : "Amar"
+    status: "advanced"
     
   aymen :
     email: "aymen@gmail.com"
     password : "aymenpassword"
-    roles : [ROLE_PROF]
+    roles : [ROLE_STUDENT]
     nom : "Aymen"
     prenom : "Ismail"
+    status: "advanced"
   
-
+  maurice :
+    email: "maurice@gmail.com"
+    password : "mauricepassword"
+    roles : [ROLE_STUDENT]
+    nom : "Maurice"
+    prenom : "Keita"
+    status: "intermediate"
+    
   yassin : 
     email: "yassin@gmail.com"
     password : "yassin"
