@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52c29fc4e28e5c08d78c095f8b6b8169",
+    "content-hash": "ad145f766c88d511b3f1b762d7bb5376",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -6229,6 +6229,74 @@
             "time": "2022-05-30T19:18:58+00:00"
         },
         {
+            "name": "symfony/stimulus-bundle",
+            "version": "v2.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/stimulus-bundle.git",
+                "reference": "257ef052bebe491d7c29e9a4a8009edb82269e15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/stimulus-bundle/zipball/257ef052bebe491d7c29e9a4a8009edb82269e15",
+                "reference": "257ef052bebe491d7c29e9a4a8009edb82269e15",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/config": "^5.4|^6.0",
+                "symfony/dependency-injection": "^5.4|^6.0",
+                "symfony/finder": "^5.4|^6.0",
+                "symfony/http-kernel": "^5.4|^6.0",
+                "twig/twig": "^2.15.3|^3.4.3"
+            },
+            "require-dev": {
+                "symfony/asset-mapper": "6.3.x-dev",
+                "symfony/framework-bundle": "^5.4|^6.0",
+                "symfony/phpunit-bridge": "^5.4|^6.0",
+                "symfony/twig-bundle": "^5.4|^6.0",
+                "zenstruck/browser": "^1.4"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\UX\\StimulusBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Integration with your Symfony app & Stimulus!",
+            "keywords": [
+                "symfony-ux"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/stimulus-bundle/tree/v2.10.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-06-29T19:46:37+00:00"
+        },
+        {
             "name": "symfony/stopwatch",
             "version": "v6.2.0",
             "source": {
@@ -7122,33 +7190,31 @@
         },
         {
             "name": "symfony/webpack-encore-bundle",
-            "version": "v1.16.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/webpack-encore-bundle.git",
-                "reference": "bb399930c0299866258b616a74a27b50b94c5d45"
+                "reference": "150fe022740fef908f4ca3d5950ce85ab040ec76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/bb399930c0299866258b616a74a27b50b94c5d45",
-                "reference": "bb399930c0299866258b616a74a27b50b94c5d45",
+                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/150fe022740fef908f4ca3d5950ce85ab040ec76",
+                "reference": "150fe022740fef908f4ca3d5950ce85ab040ec76",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.3",
-                "symfony/asset": "^4.4 || ^5.0 || ^6.0",
-                "symfony/config": "^4.4 || ^5.0 || ^6.0",
-                "symfony/dependency-injection": "^4.4 || ^5.0 || ^6.0",
-                "symfony/deprecation-contracts": "^2.1 || ^3.0",
-                "symfony/http-kernel": "^4.4 || ^5.0 || ^6.0",
-                "symfony/polyfill-php80": "^1.25.0",
-                "symfony/service-contracts": "^1.0 || ^2.0 || ^3.0"
+                "php": ">=8.1.0",
+                "symfony/asset": "^5.4 || ^6.2",
+                "symfony/config": "^5.4 || ^6.2",
+                "symfony/dependency-injection": "^5.4 || ^6.2",
+                "symfony/http-kernel": "^5.4 || ^6.2",
+                "symfony/service-contracts": "^1.1.9 || ^2.1.3 || ^3.0"
             },
             "require-dev": {
-                "symfony/framework-bundle": "^4.4 || ^5.0 || ^6.0",
-                "symfony/phpunit-bridge": "^5.3 || ^6.0",
-                "symfony/twig-bundle": "^4.4 || ^5.0 || ^6.0",
-                "symfony/web-link": "^4.4 || ^5.0 || ^6.0"
+                "symfony/framework-bundle": "^5.4 || ^6.2",
+                "symfony/phpunit-bridge": "^5.4 || ^6.2",
+                "symfony/twig-bundle": "^5.4 || ^6.2",
+                "symfony/web-link": "^5.4 || ^6.2"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -7175,7 +7241,7 @@
             "description": "Integration with your Symfony app & Webpack Encore!",
             "support": {
                 "issues": "https://github.com/symfony/webpack-encore-bundle/issues",
-                "source": "https://github.com/symfony/webpack-encore-bundle/tree/v1.16.0"
+                "source": "https://github.com/symfony/webpack-encore-bundle/tree/v2.0.1"
             },
             "funding": [
                 {
@@ -7191,7 +7257,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-18T15:21:06+00:00"
+            "time": "2023-05-31T14:28:33+00:00"
         },
         {
             "name": "symfony/workflow",
