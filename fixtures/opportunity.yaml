@@ -1,0 +1,10 @@
+# src/DataFixtures/OpportunityFixtures.yaml
+App\Entity\Opportunity:
+    opportunity_{1..10}:
+        title: <randomElement(["Boucherie", "Boutique", "Agriculture", "Immobilier", "Atelier Mecanique", "Poissonnerie"])>
+        description: "<paragraph(3)>"
+        city: <randomElement(["Nouakchott", "Nouadhibou", "Rosseau", "Nema"])>
+        budget: <randomFloat(2, 1000000, 50000000)>
+        monthlyProfit: <randomFloat(2, 100000, 5000000)>
+        
+       

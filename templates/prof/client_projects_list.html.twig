@@ -1,0 +1,50 @@
+{# templates/projet_list.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <span class="nav-link">Email: {{ app.user.email }}</span>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link">Role: {{ app.user.roles[0] }}</span>
+        </li>
+    </ul>
+</nav>
+
+        <h1>Liste des Projets</h1>
+        <a href= {{path("app_prof")}} class="btn btn-success bottom-right-button">Retourner à la recherche</a>
+
+        <div class="card-deck">
+            {% for projet in projets %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ projet.titre }}</h3>
+                        <p class="card-text">{{ projet.description }}</p>
+                        <p class="card-text">
+                            <strong>Opportunités associées :</strong>
+                            {% if projet.opportunities is empty %}
+                                Aucune opportunité associée
+                            {% else %}
+                                <ul class="list-group">
+                                    {% for opportunite in projet.opportunities %}
+                                        <li class="list-group-item"><a href="{{ path('opportunity', {'id': opportunite.id}) }}">{{ opportunite.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

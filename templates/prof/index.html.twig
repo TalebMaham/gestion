@@ -1,46 +1,74 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfController!{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parmi ces projets innovants, Choisissez le votre !</title>
+  <!-- Importation des fichiers Bootstrap via CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
 
 {% block body %}
+<body>
+  <div class="container">
+    <div class="d-flex justify-content-center">
+        <h1>Choisi ton projet</h1>
+    </div>
+       <form method="POST" action="">
+            <div class="form-group">
+                <label for="langue">Choisissez la langue :</label>
+                <select class="form-control" name="langue" id="langue">
+                    <option value="fr">Français</option>
+                    <option value="ar">العربية</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Changer</button>
+        </form>
 
-<h3>Bonjour {{user.nom}} voici tes eleves : </h3>
-{% for eleve in eleves %}
-<div class="card mb-3 col-6 mx-auto" >
-  <div class="card-header" {% if eleve.status == "beginner" %}style="background-color: red;" {% else %} {% if eleve.status == "intermediate" %}style="background-color: orange;" {% else %} {% if eleve.status == "advanced" %}style="background-color: green;"{% endif %}{% endif %}{% endif %}>
-    <h5 class="card-title">{{ eleve.prenom }} {{ eleve.nom }}</h5>
-  </div>
-  <div class="card-body">
-    <div class="container">
-      <table class="table table-striped">
-        <tbody>
-          <tr>
-            <th scope="row">Numéro</th>
-            <td>{{ eleve.id }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Notes</th>
-            <td>
-              <button class="btn btn-link" data-toggle="modal" data-target="#notesModal">notes</button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Mail</th>
-            <td>{{ eleve.email }}</td>
-          </tr>
-          <tr>
-            <th scope="row">Présence</th>
-            <td class="jn" {{ stimulus_controller('students', {url: "/"}) }}>
-              <button id="mbutton_{{eleve.id}}" class="btn btn-link" data-action="students#onChangePresenceClick" data-entry-presence="Present" data-entry-eleveid={{eleve.id}}>
-                <img id="image_{{eleve.id}}" src="{{asset('images/toggle-on-solid.svg')}}" alt="" height="20">
-              </button>
-              <p id="result_{{eleve.id}}" style="color: green;">Present</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="row">
+     {% for projet in projets %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="{{ asset('images/boutique.png') }}"  class="card-img-top img-fluid" alt="Image 1" style = "height : 200px; " >
+          <div class="card-body" style="height: 200px; overflow-y: auto;">
+            <h5 class="card-title">{{projet.titre}}</h5>
+            <p class="card-text">
+              {{projet.description}}
+            </p>
+
+          </div>
+          <a href= {{path("projet", {'id' : projet.id})}} class="btn btn-success">Choisir</a> 
+
+        </div>
+      </div>
+      {% endfor %}
+      <!-- Ajoutez d'autres colonnes ici -->
+
+    </div>
+        
+  <a href= "{{path("mon_liste")}}" class="btn btn-warning">Mes projets</a>
+  {% if is_granted('ROLE_MANAGER') %}
+    <a href="{{ path('opportunity_list') }}" class="btn btn-warning">Aller à la liste des opportunités</a>
+    <a href="{{ path('opportunity_list') }}" class="btn btn-warning">Aller à la liste des projets</a>
+    <a href="{{ path('opportunity_list') }}" class="btn btn-warning">Aller à la liste des clients</a>
+    <a href="{{ path('new_project') }}" class="btn btn-warning">+Creer un projet</a>
+
+{% endif %}
+
+    <!-- Cadre pour la vidéo de présentation -->
+    <div class="embed-responsive embed-responsive-16by9" style="position: fixed; bottom: 20px; right: 20px; width: 300px;">
+      <iframe class="embed-responsive-item" src="{{ asset('images/exemple_video.mp4') }}" allowfullscreen style="width: 100%; height: 100%;"></iframe>
     </div>
   </div>
-</div>
-{% endfor %}
+  <a href="{{ path('app_logout') }}" class="btn btn-danger">Déconnexion</a>
+
+
+  <!-- Importation des fichiers JavaScript Bootstrap via CDN -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
 {% endblock %}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choisir un projet</title>
+    <!-- Ajouter les liens vers les fichiers Bootstrap CSS et jQuery -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h1>Choisir un projet</h1>
+            </div>
+            <div class="card-body">
+                <label for="projet-select">Sélectionnez un projet :</label>
+                <select id="projet-select" class="form-control">
+                    <option value="">Sélectionnez un projet</option>
+                </select>
+                <p id="projet-details" class="mt-3"></p>
+                <a href="#" id="associer-link" class="btn btn-success float-right">Associer Opportunité</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        $.ajax({
+            url: "{{ path('projets_ajax') }}",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                var select = $('#projet-select');
+                var details = $('#projet-details');
+                var associerLink = $('#associer-link');
+
+                data.forEach(function(projet) {
+                    var option = $('<option>', {
+                        value: projet.id,
+                        text: projet.nom
+                    });
+                    select.append(option);
+                });
+
+             select.on('change', function() {
+    var selectedId = $(this).val();
+    console.log("l'id du projet  : "+selectedId); 
+    console.log("l'id de l'oportunity : "+ {{opportunity.id}});
+    var lienAssocier = document.getElementById('associer-link');
+    lienAssocier.href ="{{ path('associate_opportunity', {projetId : 1 , opportuniteId : opportunity.id }) }}"
+
+     });
+
+            }
+        });
+    });
+    </script>
+
+    <!-- Ajouter le lien vers le fichier Bootstrap JS à la fin du body -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

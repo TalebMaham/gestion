@@ -53,7 +53,7 @@ class UserController extends AbstractController
     }
 
 
-    #[Route('/logout', name: 'logout_path')]
+    #[Route('/logout', name: 'app_logout')]
     public function logout()
     {
 

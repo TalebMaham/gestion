@@ -1,0 +1,11 @@
+# src/DataFixtures/ProjetFixtures.yaml
+# App\Entity\Projet:
+#     projet_{1..10}:
+#         titre: "<name()> Projet"
+#         description: "<sentence(10)>"
+#         budgetMax: <randomFloat(2, 1000, 100000)>
+#         budgetMin: <randomFloat(2, 500, 50000)>
+#         pourcentageRentabilite: <randomFloat(2, 5, 50)>
+#         villes: ["<word()>", "<word()>", "<word()>", "<word()>", "<word()>"]
+#         opportunities: ['@opportunity_1', '@opportunity_2', '@opportunity_3', '@opportunity_4', '@opportunity_5' ]
+#         user: "@sidi"
